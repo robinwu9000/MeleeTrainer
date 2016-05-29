@@ -1,0 +1,3 @@
+var Banner = React.createClass({
+  
+})
