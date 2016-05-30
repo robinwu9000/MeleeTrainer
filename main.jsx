@@ -1,21 +1,27 @@
 var App = React.createClass({
   render: function() {
     return (
-      <div className="banner">
-        <h1>Melee Training App</h1>
+      <div>
       </div>
     );
   }
 })
 
 
-// var Banner = React.createClass({
-//   render: function() {
-//     return (
-//       <div>Name</div>
-//     );
-//   }
-// });
+var Banner = React.createClass({
+  render: function() {
+    return (
+      <ul id={"header-bar"}>
+        <li id={"title"}>
+          <h2>Melee Training App</h2>
+        </li>
+        <li id={"timer"}>
+          <Timer />
+        </li>
+      </ul>
+    );
+  }
+});
 
 var Timer = React.createClass({
   getInitialState: function() {
@@ -82,6 +88,6 @@ var StartStopButton = React.createClass({
 })
 
 ReactDOM.render(
-  <Timer />,
+  <Banner />,
   $("#content")[0]
 )

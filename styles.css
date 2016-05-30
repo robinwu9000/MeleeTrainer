@@ -1,0 +1,38 @@
+#header-bar {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  height: 50px;
+  border-bottom: 1px solid black;
+}
+
+.clearfix {
+  clear: both;
+}
+
+li {
+  display: inline;
+}
+
+#title {
+  height: 100%;
+  float: left;
+}
+
+#title h2 {
+  margin: 0;
+}
+
+#timer {
+  height: 100%;
+  float: right;
+  padding-right: 20px;
+}
+
+#timer div {
+  position: relative;
+  top: 25%;
+}
