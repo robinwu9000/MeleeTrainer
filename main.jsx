@@ -6,7 +6,7 @@ var App = React.createClass({
           <Banner />
         </div>
         <div id="main">
-          <CharacterList />
+          <TechniqueList />
         </div>
       </div>
     );
@@ -131,8 +131,36 @@ var Character = React.createClass({
 });
 
 var TechniqueList = React.createClass({
-  techniques: [{tech: "Short Hop", reps: 20},
-               {tech: "Fast Fall", reps: 20}],
+  techniques: [{tech: "Short Hop", reps: 20, step: 5, id: 1},
+               {tech: "Fast Fall", reps: 20, step: 5, id: 2},
+               {tech: "L-cancel", reps: 20, step: 5, id: 3},
+               {tech: "SHFFL", reps: 20, step: 5, id: 4}],
+
+  render: function () {
+    var techNodes = this.techniques.map(function(technique) {
+      return (
+        <Technique tech={technique.tech} reps={technique.reps} step={technique.step} key={technique.id}/>
+      );
+    });
+
+    return (
+      <div>
+        {techNodes}
+      </div>
+    )
+  }
+});
+
+var Technique = React.createClass({
+  render: function() {
+    return(
+      <div className="tech">
+        <p>{this.props.tech}</p>
+        <input type="number" defaultValue={this.props.reps} step={this.props.step} />
+        <input type="checkbox" /> Completed
+      </div>
+    )
+  }
 });
 
 ReactDOM.render(
