@@ -2,6 +2,12 @@ var App = React.createClass({
   render: function() {
     return (
       <div>
+        <div id="top-banner">
+          <Banner />
+        </div>
+        <div id="main">
+          <CharacterList />
+        </div>
       </div>
     );
   }
@@ -87,7 +93,49 @@ var StartStopButton = React.createClass({
   }
 })
 
+var CharacterList = React.createClass({
+  chars: [{id: 1, name: "Fox"}, {id: 2, name: "Marth"},
+               {id: 3, name: "Sheik"}, {id: 4, name: "Captain Falcon"},
+               {id: 5, name: "Falco"}],
+
+  render: function() {
+    var charNodes = this.chars.map(function(char) {
+      return(
+        <Character name={char.name} key={char.id}></Character>
+      );
+    });
+
+    return (
+      <div className="char-list">
+        {charNodes}
+      </div>
+    );
+  }
+
+});
+
+var Character = React.createClass({
+  handleClick: function () {
+    return;
+  },
+
+  render: function() {
+    return (
+      <div>
+        <h4>
+          {this.props.name}
+        </h4>
+      </div>
+    );
+  }
+});
+
+var TechniqueList = React.createClass({
+  techniques: [{tech: "Short Hop", reps: 20},
+               {tech: "Fast Fall", reps: 20}],
+});
+
 ReactDOM.render(
-  <Banner />,
+  <App />,
   $("#content")[0]
 )
