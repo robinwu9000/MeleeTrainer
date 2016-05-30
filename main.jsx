@@ -2,7 +2,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="banner">
-        <h1>some shit.</h1>
+        <h1>Melee Training App</h1>
       </div>
     );
   }
@@ -29,9 +29,16 @@ var Timer = React.createClass({
     }
   },
 
+  start: function() {
+    this.interval = setInterval(this.tick, 1000);
+  },
+
+  stop: function() {
+    clearInterval(this.interval);
+  },
+
   componentDidMount: function() {
     this.setState({seconds: this.props.seconds || this.state.seconds});
-    this.interval = setInterval(this.tick, 200);
   },
 
   componentWillUnmount: function() {
@@ -45,10 +52,34 @@ var Timer = React.createClass({
     var seconds = Math.floor(this.state.seconds % 60);
     output += (seconds < 10 ? '0' : '') + seconds;
     return (
-      <div>{output}</div>
+      <div>
+        {output} <StartStopButton parent={this}/>
+      </div>
     );
   }
 });
+
+var StartStopButton = React.createClass({
+  getInitialState: function() {
+    return {running: false};
+  },
+
+  handleClick: function() {
+    if(this.state.running) {
+      this.props.parent.stop();
+    } else {
+      this.props.parent.start();
+    }
+    this.setState({running: !this.state.running});
+  },
+
+  render: function() {
+    var text = this.state.running ? "Pause" : "Start";
+    return (
+      <button onClick={this.handleClick}>{text}</button>
+    );
+  }
+})
 
 ReactDOM.render(
   <Timer />,
