@@ -6,7 +6,7 @@ var App = React.createClass({
           <Banner />
         </div>
         <div id="main">
-          <TechniqueList />
+          <CharacterList />
         </div>
       </div>
     );
@@ -115,13 +115,16 @@ var CharacterList = React.createClass({
 });
 
 var Character = React.createClass({
-  handleClick: function () {
-    return;
+  handleClick: function() {
+    ReactDOM.render(
+      <TechniqueList />,
+      $("#main")[0]
+    );
   },
 
   render: function() {
     return (
-      <div>
+      <div onClick={this.handleClick}>
         <h4>
           {this.props.name}
         </h4>
@@ -136,7 +139,7 @@ var TechniqueList = React.createClass({
                {tech: "L-cancel", reps: 20, step: 5, id: 3},
                {tech: "SHFFL", reps: 20, step: 5, id: 4}],
 
-  render: function () {
+  render: function() {
     var techNodes = this.techniques.map(function(technique) {
       return (
         <Technique tech={technique.tech} reps={technique.reps} step={technique.step} key={technique.id}/>
@@ -156,12 +159,22 @@ var Technique = React.createClass({
     return(
       <div className="tech">
         <p>{this.props.tech}</p>
-        <input type="number" defaultValue={this.props.reps} step={this.props.step} />
+        <input type="number" defaultValue={this.props.reps} min="10" step={this.props.step} />
         <input type="checkbox" /> Completed
       </div>
     )
   }
 });
+
+var BackButton = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <button></button>
+      </div>
+    );
+  }
+})
 
 ReactDOM.render(
   <App />,
