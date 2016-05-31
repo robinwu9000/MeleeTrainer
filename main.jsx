@@ -148,6 +148,7 @@ var TechniqueList = React.createClass({
 
     return (
       <div>
+        <BackButton />
         {techNodes}
       </div>
     )
@@ -167,10 +168,17 @@ var Technique = React.createClass({
 });
 
 var BackButton = React.createClass({
+  handleClick: function() {
+    ReactDOM.render(
+      <CharacterList />,
+      $("#main")[0]
+    );
+  },
+
   render: function() {
     return (
       <div>
-        <button></button>
+        <button onClick={this.handleClick}>Back</button>
       </div>
     );
   }
