@@ -8,6 +8,7 @@
           v-model='technique.completed'
           @click='toggleCompletion(technique)'>
       </div>
+      <button type="button" @click='goBack'>Back</button>
     </div>
     <div class="no-character-selected" v-else>
       Please Select a Character from the List
@@ -29,6 +30,9 @@ export default {
     toggleCompletion (tech) {
       let checked = event.target.checked;
       this.$store.commit('toggleTechCompletion', { tech, completed: checked });
+    },
+    goBack () {
+      this.$store.commit('unselectCharacter');
     }
   }
 }

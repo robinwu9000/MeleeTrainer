@@ -23,6 +23,9 @@ const store = new Vuex.Store({
     selectCharacter: (state, char) => {
       state.selectedCharacter = char;
     },
+    unselectCharacter: (state) => {
+      state.selectedCharacter = null;
+    },
     toggleTechCompletion: (state, { tech, completed }) => {
       let index = state.selectedCharacter.techniques.indexOf(tech),
         selectedTech = state.selectedCharacter.techniques[index];
