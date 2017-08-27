@@ -22,6 +22,11 @@ const store = new Vuex.Store({
   mutations: {
     selectCharacter: (state, char) => {
       state.selectedCharacter = char;
+    },
+    toggleTechCompletion: (state, { tech, completed }) => {
+      let index = state.selectedCharacter.techniques.indexOf(tech),
+        selectedTech = state.selectedCharacter.techniques[index];
+      selectedTech.completed = completed;
     }
   }
 });

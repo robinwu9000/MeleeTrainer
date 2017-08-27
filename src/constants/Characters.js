@@ -9,7 +9,8 @@ const Characters = [
 ];
 
 for (var i = 0; i < Characters.length; i++) {
-  Characters[i].techniques = CommonTechniques.slice();
+  let techniquesCopy = JSON.parse(JSON.stringify(CommonTechniques));
+  Characters[i].techniques = techniquesCopy;
 }
 
 export default Characters;
