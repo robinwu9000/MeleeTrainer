@@ -2,19 +2,27 @@
   <div id='character-list'>
     <div class='character'
       v-for='character in characters'
-      :key='character.id'>
+      :class='{ selected: selectedCharacter === character }'
+      @click='selectCharacter(character)'>
       {{ character.name }}
     </div>
   </div>
 </template>
 
 <script>
-import Characters from '../constants/Characters';
+import { mapGetters } from 'vuex';
 
 export default {
-  data () {
-    return {
-      characters: Characters
+  computed: {
+    ...mapGetters({
+      characters: 'allCharacters',
+      selectedCharacter: 'selectedCharacter'
+    })
+  },
+
+  methods: {
+    selectCharacter (char) {
+      this.$store.commit('selectCharacter', char);
     }
   }
 }
@@ -31,6 +39,10 @@ export default {
     border: 1px solid #2ed51a;
     height: 50px;
     padding-left: 30px;
+  }
+
+  .character.selected {
+    background-color: #a5eb9d;
   }
 
   .character:hover {

@@ -1,9 +1,15 @@
+import CommonTechniques from './Techniques';
+
 const Characters = [
-  {id: 1, name: 'Fox'},
-  {id: 2, name: 'Sheik'},
-  {id: 3, name: 'Marth'},
-  {id: 4, name: 'Kirby'},
-  {id: 5, name: 'Luigi'}
+  {name: 'Fox'},
+  {name: 'Sheik'},
+  {name: 'Marth'},
+  {name: 'Kirby'},
+  {name: 'Luigi'}
 ];
+
+for (var i = 0; i < Characters.length; i++) {
+  Characters[i].techniques = CommonTechniques.slice();
+}
 
 export default Characters;
